@@ -3,3 +3,5 @@
 CA Fullstack Web Dev Rock-Paper-Scissor Challenge for weeks 3 & 4.
 
 ## Project Setup
+
+This project is built in ReactJS. 
