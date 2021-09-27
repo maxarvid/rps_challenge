@@ -1,6 +1,15 @@
 import React from "react";
+import Header from "./components/Header";
+import Game from "./components/Game";
+import Footer from "./components/Footer";
 
 const App = () => {
-  return <h1>Don't Run with Scissors!</h1>;
+  return (
+    <div>
+      <Header />
+      <Game />
+      <Footer />
+    </div>
+  );
 };
 export default App;
