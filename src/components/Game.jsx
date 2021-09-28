@@ -14,6 +14,7 @@ const Game = () => {
     newComputerChoice();
   }, [])
 
+
   return (
     <Container id="game">
       <p>The value of Weapon is {weapon}</p>
