@@ -10,7 +10,7 @@ const Game = () => {
       <Button id="new-game">New Game</Button>
       <p>Choose your weapon</p>
       <Form>
-        <Form.Field onClick={() => setWeapon("Rock")}>
+        <Form.Field id='weapon-rock' onClick={() => setWeapon("Rock")}>
           <Checkbox
             radio
             name="gameRadioGroup"
@@ -18,7 +18,7 @@ const Game = () => {
             checked={weapon == "Rock"}
           />
         </Form.Field>
-        <Form.Field onClick={() => setWeapon("Paper")}>
+        <Form.Field id='weapon-paper' onClick={() => setWeapon("Paper")}>
           <Checkbox
             radio
             name="gameRadioGroup"
@@ -26,7 +26,7 @@ const Game = () => {
             checked={weapon == "Paper"}
           />
         </Form.Field>
-        <Form.Field onClick={() => setWeapon("Scissors")}>
+        <Form.Field id='weapon-scissors' onClick={() => setWeapon("Scissors")}>
           <Checkbox
             radio
             name="gameRadioGroup"
@@ -35,6 +35,7 @@ const Game = () => {
            />
         </Form.Field>
       </Form>
+      <Button id="play-game">Play Game</Button>
     </Container>
   );
 };
