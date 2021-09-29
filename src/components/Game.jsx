@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Checkbox, Container, Button, Form } from "semantic-ui-react";
+import GameResult from "./GameResult";
 
 const Game = () => {
   const [weapon, setWeapon] = useState("");
@@ -10,15 +11,15 @@ const Game = () => {
     setComputerWeapon(choices[Math.floor(Math.random() * 3)]);
   };
 
-  useEffect(() => {
-    newComputerChoice();
-  }, [])
+  // useEffect(() => {
+  //   newComputerChoice();
+  // }, [])
 
-  const playGame = () => {
-    return (
-      <p id="game-result">I was called!</p>
-    )
-  }
+  // const playGame = () => {
+  //   return (
+  //     <p id="game-result">I was called!</p>
+  //   )
+  // }
 
   return (
     <Container id="game">
@@ -52,7 +53,8 @@ const Game = () => {
           />
         </Form.Field>
       </Form>
-      <Button onClick={() => playGame()} id="play-game">Play Game</Button>
+      <Button onClick={() => newComputerChoice()} id="play-game">Play Game</Button>
+      <p>{GameResult(weapon, computerWeapon)}</p>
     </Container>
   );
 };
