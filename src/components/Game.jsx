@@ -24,7 +24,7 @@ const Game = () => {
   return (
     <Container id="game">
       <p id="selected-weapon">You chose {weapon}</p>
-      <p>The value of computerWeapon is {computerWeapon}</p>
+      <p id="computer-weapon">The value of computerWeapon is {computerWeapon}</p>
       <Button id="new-game">New Game</Button>
       <p>Choose your weapon</p>
       <Form>
@@ -54,7 +54,7 @@ const Game = () => {
         </Form.Field>
       </Form>
       <Button onClick={() => newComputerChoice()} id="play-game">Play Game</Button>
-      <p>{GameResult(weapon, computerWeapon)}</p>
+      <p id="game-result"></p>
     </Container>
   );
 };
