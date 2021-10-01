@@ -10,7 +10,12 @@ describe("Play Game", () => {
     cy.get("#game-result").should("not.be.empty");
   });
 
-  it('is expected that the computer chooses a weapon', () => {
-    cy.get("#computer-weapon").should('exist')
+  it("is expected that the computer chooses a weapon", () => {
+    cy.get("#computer-weapon").should("exist");
+  });
+
+  it("is expected to clear result output when new game is clicked", () => {
+    cy.get("#new-game").click();
+    cy.get("#game-result").should("be.empty");
   });
 });
