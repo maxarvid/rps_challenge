@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Checkbox, Container, Button, Form } from "semantic-ui-react";
 
 const Game = ({ userScore, setUserScore, computerScore, setComputerScore }) => {
@@ -6,6 +6,7 @@ const Game = ({ userScore, setUserScore, computerScore, setComputerScore }) => {
   const [computerWeapon, setComputerWeapon] = useState("");
   const [result, setResult] = useState("");
   const [showPlayGame, setShowPlayGame] = useState(true);
+  const [mount, setMount] = useState(false);
 
   const newComputerChoice = () => {
     const choices = ["rock", "paper", "scissors"];
@@ -21,6 +22,7 @@ const Game = ({ userScore, setUserScore, computerScore, setComputerScore }) => {
       onClick={() => {
         newComputerChoice();
         setShowPlayGame(false);
+        setMount(false);
       }}
       id="play-game"
     >
@@ -28,36 +30,45 @@ const Game = ({ userScore, setUserScore, computerScore, setComputerScore }) => {
     </Button>
   );
 
-
+  const gameResult = useCallback(() => {
+    if (weapon === "rock" && computerWeapon === "paper") {
+      setResult("You lose");
+      setComputerScore(computerScore + 1);
+    } else if (weapon === "rock" && computerWeapon === "scissors") {
+      setResult("You win");
+      setUserScore(userScore + 1);
+    } else if (weapon === "paper" && computerWeapon === "rock") {
+      setResult("You win");
+      setUserScore(userScore + 1);
+    } else if (weapon === "paper" && computerWeapon === "scissors") {
+      setResult("You lose");
+      setComputerScore(computerScore + 1);
+    } else if (weapon === "scissors" && computerWeapon === "rock") {
+      setResult("You lose");
+      setComputerScore(computerScore + 1);
+    } else if (weapon === "scissors" && computerWeapon === "paper") {
+      setResult("You win");
+      setUserScore(userScore + 1);
+    } else if (weapon === "" && weapon === computerWeapon) {
+      setResult("");
+    } else if (weapon === computerWeapon) {
+      setResult("Draw");
+    }
+  }, [
+    weapon,
+    computerWeapon,
+    computerScore,
+    setComputerScore,
+    userScore,
+    setUserScore,
+  ]);
 
   useEffect(() => {
-    const gameResult = () => {
-      if (weapon === "rock" && computerWeapon === "paper") {
-        setResult("You lose");
-        setComputerScore(computerScore + 1);
-      } else if (weapon === "rock" && computerWeapon === "scissors") {
-        setResult("You win");
-        setUserScore(userScore + 1);
-      } else if (weapon === "paper" && computerWeapon === "rock") {
-        setResult("You win");
-        setUserScore(userScore + 1);
-      } else if (weapon === "paper" && computerWeapon === "scissors") {
-        setResult("You lose");
-        setComputerScore(computerScore + 1);
-      } else if (weapon === "scissors" && computerWeapon === "rock") {
-        setResult("You lose");
-        setComputerScore(computerScore + 1);
-      } else if (weapon === "scissors" && computerWeapon === "paper") {
-        setResult("You win");
-        setUserScore(userScore + 1);
-      } else if (weapon === "" && weapon === computerWeapon) {
-        setResult("");
-      } else if (weapon === computerWeapon) {
-        setResult("Draw");
-      }
-    };
-    gameResult();
-  }, [weapon, computerWeapon, userScore, computerScore, setUserScore, setComputerScore]);
+    if (!mount) {
+      setMount(true);
+      gameResult();
+    }
+  }, [computerWeapon, gameResult, mount]);
 
   return (
     <Container id="game">
