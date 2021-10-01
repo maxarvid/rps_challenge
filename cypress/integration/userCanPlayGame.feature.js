@@ -7,7 +7,7 @@ describe("Play Game", () => {
   });
 
   it("is expected to play the game after weapon is chosen", () => {
-    cy.get("#game-result").should("exist");
+    cy.get("#game-result").should("not.be.empty");
   });
 
   it('is expected that the computer chooses a weapon', () => {

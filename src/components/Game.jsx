@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Checkbox, Container, Button, Form } from "semantic-ui-react";
-// import GameResult from "./GameResult";
 
 const Game = () => {
   const [weapon, setWeapon] = useState("");
@@ -32,13 +31,8 @@ const Game = () => {
 
   useEffect(() => {
     newComputerChoice();
-  }, [computerWeapon])
-
-  // const playGame = () => {
-  //   return (
-  //     <p id="game-result">I was called!</p>
-  //   )
-  // }
+    gameResult();
+  }, [weapon, computerWeapon])
 
   return (
     <Container id="game">
