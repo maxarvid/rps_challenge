@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 
-const GameResult = ({ userWeapon, computerWeapon }) => {
+const GameResult = ({ weapon, computerWeapon }) => {
   const [result, setResult] = useState("");
 
-  if (userWeapon === "rock" && computerWeapon === "paper") {
+  if (weapon === "rock" && computerWeapon === "paper") {
     setResult('You lose')
-  } else if (userWeapon === "rock" && computerWeapon === "scissors") {
+  } else if (weapon === "rock" && computerWeapon === "scissors") {
     setResult('You win')
-  } else if (userWeapon === "paper" && computerWeapon === "rock") {
+  } else if (weapon === "paper" && computerWeapon === "rock") {
     setResult('You win')
-  } else if (userWeapon === "paper" && computerWeapon === "scissors") {
+  } else if (weapon === "paper" && computerWeapon === "scissors") {
     setResult('You lose')
-  } else if (userWeapon === "scissors" && computerWeapon === "rock") {
+  } else if (weapon === "scissors" && computerWeapon === "rock") {
     setResult('You lose')
-  } else if (userWeapon === "scissors" && computerWeapon === "paper") {
+  } else if (weapon === "scissors" && computerWeapon === "paper") {
     setResult('You win')
   } else {
     setResult('Draw')
