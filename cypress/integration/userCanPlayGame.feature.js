@@ -14,7 +14,7 @@ describe("Play Game", () => {
     cy.get("#computer-weapon").should("exist");
   });
 
-  it("is expected to clear result output when new game is clicked", () => {
+  it.only("is expected to clear result output when new game is clicked", () => {
     cy.get("#new-game").click();
     cy.get("#game-result").should("be.empty");
   });

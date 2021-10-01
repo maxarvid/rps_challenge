@@ -11,6 +11,10 @@ const Game = () => {
     setComputerWeapon(choices[Math.floor(Math.random() * 3)]);
   };
 
+  useEffect(() => {
+    setComputerWeapon();
+  }, []);
+
   const gameResult = () => {
     if (weapon === "rock" && computerWeapon === "paper") {
       setResult("You lose");
@@ -24,15 +28,16 @@ const Game = () => {
       setResult("You lose");
     } else if (weapon === "scissors" && computerWeapon === "paper") {
       setResult("You win");
-    } else {
+    } else if (weapon === "" && weapon === computerWeapon) {
+      setResult("");
+    } else if (weapon === computerWeapon) {
       setResult("Draw");
     }
   };
 
   useEffect(() => {
-    newComputerChoice();
     gameResult();
-  }, [weapon, computerWeapon])
+  }, [weapon, computerWeapon]);
 
   return (
     <Container id="game">
@@ -40,7 +45,16 @@ const Game = () => {
       <p id="computer-weapon">
         The value of computerWeapon is {computerWeapon}
       </p>
-      <Button id="new-game">New Game</Button>
+      <Button
+        id="new-game"
+        onClick={() => {
+          setResult("");
+          setWeapon("");
+          setComputerWeapon("");
+        }}
+      >
+        New Game
+      </Button>
       <p>Choose your weapon</p>
       <Form>
         <Form.Field id="weapon-rock" onClick={() => setWeapon("rock")}>
@@ -71,9 +85,7 @@ const Game = () => {
       <Button onClick={() => newComputerChoice()} id="play-game">
         Play Game
       </Button>
-      <p id="game-result">
-        {result}
-      </p>
+      <p id="game-result">{result}</p>
     </Container>
   );
 };
