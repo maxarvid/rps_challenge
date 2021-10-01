@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Checkbox, Container, Button, Form } from "semantic-ui-react";
 
-const Game = () => {
+const Game = ( {userScore, setUserScore, computerScore, setComputerScore}) => {
   const [weapon, setWeapon] = useState("");
   const [computerWeapon, setComputerWeapon] = useState("");
   const [result, setResult] = useState("");
@@ -18,16 +18,22 @@ const Game = () => {
   const gameResult = () => {
     if (weapon === "rock" && computerWeapon === "paper") {
       setResult("You lose");
+      setComputerScore(computerScore + 1)
     } else if (weapon === "rock" && computerWeapon === "scissors") {
       setResult("You win");
+      setUserScore(userScore + 1)
     } else if (weapon === "paper" && computerWeapon === "rock") {
       setResult("You win");
+      setUserScore(userScore + 1)
     } else if (weapon === "paper" && computerWeapon === "scissors") {
       setResult("You lose");
+      setComputerScore(computerScore + 1)
     } else if (weapon === "scissors" && computerWeapon === "rock") {
       setResult("You lose");
+      setComputerScore(computerScore + 1)
     } else if (weapon === "scissors" && computerWeapon === "paper") {
       setResult("You win");
+      setUserScore(userScore + 1)
     } else if (weapon === "" && weapon === computerWeapon) {
       setResult("");
     } else if (weapon === computerWeapon) {
