@@ -28,35 +28,36 @@ const Game = ({ userScore, setUserScore, computerScore, setComputerScore }) => {
     </Button>
   );
 
-  const gameResult = () => {
-    if (weapon === "rock" && computerWeapon === "paper") {
-      setResult("You lose");
-      setComputerScore(computerScore + 1);
-    } else if (weapon === "rock" && computerWeapon === "scissors") {
-      setResult("You win");
-      setUserScore(userScore + 1);
-    } else if (weapon === "paper" && computerWeapon === "rock") {
-      setResult("You win");
-      setUserScore(userScore + 1);
-    } else if (weapon === "paper" && computerWeapon === "scissors") {
-      setResult("You lose");
-      setComputerScore(computerScore + 1);
-    } else if (weapon === "scissors" && computerWeapon === "rock") {
-      setResult("You lose");
-      setComputerScore(computerScore + 1);
-    } else if (weapon === "scissors" && computerWeapon === "paper") {
-      setResult("You win");
-      setUserScore(userScore + 1);
-    } else if (weapon === "" && weapon === computerWeapon) {
-      setResult("");
-    } else if (weapon === computerWeapon) {
-      setResult("Draw");
-    }
-  };
+
 
   useEffect(() => {
+    const gameResult = () => {
+      if (weapon === "rock" && computerWeapon === "paper") {
+        setResult("You lose");
+        setComputerScore(computerScore + 1);
+      } else if (weapon === "rock" && computerWeapon === "scissors") {
+        setResult("You win");
+        setUserScore(userScore + 1);
+      } else if (weapon === "paper" && computerWeapon === "rock") {
+        setResult("You win");
+        setUserScore(userScore + 1);
+      } else if (weapon === "paper" && computerWeapon === "scissors") {
+        setResult("You lose");
+        setComputerScore(computerScore + 1);
+      } else if (weapon === "scissors" && computerWeapon === "rock") {
+        setResult("You lose");
+        setComputerScore(computerScore + 1);
+      } else if (weapon === "scissors" && computerWeapon === "paper") {
+        setResult("You win");
+        setUserScore(userScore + 1);
+      } else if (weapon === "" && weapon === computerWeapon) {
+        setResult("");
+      } else if (weapon === computerWeapon) {
+        setResult("Draw");
+      }
+    };
     gameResult();
-  }, [weapon, computerWeapon]);
+  }, [weapon, computerWeapon, userScore, computerScore, setUserScore, setComputerScore]);
 
   return (
     <Container id="game">
