@@ -7,7 +7,13 @@ describe("User and computer score", () => {
     cy.get("#score").should("contain", "Your score: 0 – Computer score: 0");
   });
 
-  it("is expected to increment after a game is played", () => {
+  it("is expected to increment after a few games are played", () => {
+    cy.get("#weapon-rock").click();
+    cy.get("#play-game").click();
+    cy.get("#new-game").click();
+    cy.get("#weapon-rock").click();
+    cy.get("#play-game").click();
+    cy.get("#new-game").click();
     cy.get("#weapon-rock").click();
     cy.get("#play-game").click();
     cy.get("#score").should(
