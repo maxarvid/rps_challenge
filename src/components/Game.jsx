@@ -82,7 +82,7 @@ const Game = ({ userScore, setUserScore, computerScore, setComputerScore }) => {
             radio
             name="gameRadioGroup"
             label="Rock"
-            checked={weapon == "rock"}
+            checked={weapon === "rock"}
           />
         </Form.Field>
         <Form.Field id="weapon-paper" onClick={() => setWeapon("paper")}>
@@ -90,7 +90,7 @@ const Game = ({ userScore, setUserScore, computerScore, setComputerScore }) => {
             radio
             name="gameRadioGroup"
             label="Paper"
-            checked={weapon == "paper"}
+            checked={weapon === "paper"}
           />
         </Form.Field>
         <Form.Field id="weapon-scissors" onClick={() => setWeapon("scissors")}>
@@ -98,7 +98,7 @@ const Game = ({ userScore, setUserScore, computerScore, setComputerScore }) => {
             radio
             name="gameRadioGroup"
             label="Scissors"
-            checked={weapon == "scissors"}
+            checked={weapon === "scissors"}
           />
         </Form.Field>
       </Form>
