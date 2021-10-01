@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Checkbox, Container, Button, Form } from "semantic-ui-react";
 
-const Game = ( {userScore, setUserScore, computerScore, setComputerScore}) => {
+const Game = ({ userScore, setUserScore, computerScore, setComputerScore }) => {
   const [weapon, setWeapon] = useState("");
   const [computerWeapon, setComputerWeapon] = useState("");
   const [result, setResult] = useState("");
+  const [showPlayGame, setShowPlayGame] = useState(true);
 
   const newComputerChoice = () => {
     const choices = ["rock", "paper", "scissors"];
@@ -15,25 +16,37 @@ const Game = ( {userScore, setUserScore, computerScore, setComputerScore}) => {
     setComputerWeapon();
   }, []);
 
+  const playGame = () => (
+    <Button
+      onClick={() => {
+        newComputerChoice();
+        setShowPlayGame(false);
+      }}
+      id="play-game"
+    >
+      Play Game
+    </Button>
+  );
+
   const gameResult = () => {
     if (weapon === "rock" && computerWeapon === "paper") {
       setResult("You lose");
-      setComputerScore(computerScore + 1)
+      setComputerScore(computerScore + 1);
     } else if (weapon === "rock" && computerWeapon === "scissors") {
       setResult("You win");
-      setUserScore(userScore + 1)
+      setUserScore(userScore + 1);
     } else if (weapon === "paper" && computerWeapon === "rock") {
       setResult("You win");
-      setUserScore(userScore + 1)
+      setUserScore(userScore + 1);
     } else if (weapon === "paper" && computerWeapon === "scissors") {
       setResult("You lose");
-      setComputerScore(computerScore + 1)
+      setComputerScore(computerScore + 1);
     } else if (weapon === "scissors" && computerWeapon === "rock") {
       setResult("You lose");
-      setComputerScore(computerScore + 1)
+      setComputerScore(computerScore + 1);
     } else if (weapon === "scissors" && computerWeapon === "paper") {
       setResult("You win");
-      setUserScore(userScore + 1)
+      setUserScore(userScore + 1);
     } else if (weapon === "" && weapon === computerWeapon) {
       setResult("");
     } else if (weapon === computerWeapon) {
@@ -57,6 +70,7 @@ const Game = ( {userScore, setUserScore, computerScore, setComputerScore}) => {
           setResult("");
           setWeapon("");
           setComputerWeapon("");
+          setShowPlayGame(true);
         }}
       >
         New Game
@@ -88,9 +102,7 @@ const Game = ( {userScore, setUserScore, computerScore, setComputerScore}) => {
           />
         </Form.Field>
       </Form>
-      <Button onClick={() => newComputerChoice()} id="play-game">
-        Play Game
-      </Button>
+      {showPlayGame ? playGame() : null}
       <p id="game-result">{result}</p>
     </Container>
   );

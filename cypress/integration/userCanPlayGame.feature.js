@@ -18,4 +18,8 @@ describe("Play Game", () => {
     cy.get("#new-game").click();
     cy.get("#game-result").should("be.empty");
   });
+
+  it('is expected to only allow new game after game is played', () => {
+    cy.get('#play-game').should('not.exist')
+  });
 });
